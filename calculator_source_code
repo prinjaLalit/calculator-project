@@ -1,0 +1,198 @@
+class Simple_Calculator{
+    public:
+    double a,b;
+    void set_Data()
+    {
+    cout<<"Enter the two numbers"<<endl;
+    cin>>a>>b;
+    }
+    void Add()
+    {
+    double sum;
+    sum=a+b;
+    cout<<"The Sum is: "<<sum<<endl;
+    }
+    void Subtract()
+    {
+    double difference;
+    difference= a-b;
+    cout<<"The Difference is: "<<difference<<endl;
+    }
+    void Multiply()
+    {
+    double product;
+    product= a*b;
+    cout<<"The Product is: "<<product<<endl;
+    }
+    void Divide()
+    {
+    double Quotient, Remainder;
+    Quotient= a/b;
+    cout<<"The quotient is: "<<Quotient<<endl;
+    }
+};
+
+class Scientific_Calculator{
+    public:
+    
+    double Angle, l, sin_theta, Tan_Value, number, exponent, logarithm;
+    int num,integer, i, power, base;
+    double radians= Angle*(pi/180);
+    double pi= 3.14159;
+    
+    void set_Data2()
+    {
+     cout<<"Enter the value of angle in degrees"<<endl;
+     cin>>Angle;
+     radians= Angle*(pi/180);
+     cout<<"The angle in radians is: "<<radians<<endl;
+     }
+     
+     int set_Factorial()
+     {
+         int number;
+       cout<<"Enter the number to find factorial"<<endl;
+       cin>>number;
+       return number;
+     }
+
+    void Sine()
+    {
+    double sin_theta;
+    sin_theta= sin(radians);
+    cout<<"The sine value is: "<<sin_theta<<endl;
+    }
+    
+    void Cosine()
+    {
+    double Cos_Value; /*Angle, radians, pi;*/
+    Cos_Value= cos(radians);
+    cout<<"The cosine value is: "<<Cos_Value<<endl;
+    }
+    
+    void Tangent()
+    {
+    double Tan_Value;
+    Tan_Value= tan(radians);
+    cout<<"The tan value is: "<<Tan_Value<<endl;
+    }
+    
+    int Factorial(int number)
+    {
+     int fact;
+     if(number == 1)
+     {
+      return 1;
+     }
+     else
+     {
+      fact = number*Factorial(number-1);
+      
+     }
+     return fact;
+    }
+    
+    void Exponent()
+    {
+    double number, exponent;
+    int power;
+    cout<<"Enter the base number and exponent to be found respectively"<<endl;
+    cin>>number>>power;
+    exponent= pow(number, power);
+    cout<<"The exponent result is: "<<exponent<<endl;
+     }
+    
+};
+
+class Complete_Calculator : public Simple_Calculator, public Scientific_Calculator
+{
+public:
+int choice;
+
+    void display_choice()
+    {
+    cout<<endl<<"Enter"<<endl<<"0- Exit the Program"<<endl<<"1-Add"<<endl<<"2-Subtract"<<endl<<"3-Multiply"<<endl<<"4-Divide"<<endl<<"5-Sine"<<endl<<"6- Cosine"<<endl<<"7-Tangent"<<endl<<"8-Exponent"<<endl<<"9-Factorial"<<endl;
+    }
+    
+    void user_input()
+    {
+    cout<<"Enter the Choice"<<endl;
+    cin>>choice;
+    }
+      
+      void Choice()
+      {
+        if(choice == 0)
+        {
+         exit(0);
+        }
+       if(choice==1)
+       {
+        cout<<endl;
+        set_Data();
+        Add();
+       }
+         else if(choice==2)
+         {
+          cout<<endl;
+         set_Data();
+         Subtract();
+         }
+           else if(choice==3)
+           {
+            cout<<endl;
+            set_Data();
+            Multiply();
+           }
+             else if(choice==4)
+             {
+              cout<<endl;
+              set_Data();
+              Divide();
+             }
+              if(choice == 5)
+                 {
+                  cout<<endl;
+                  set_Data2();
+                  Sine(); 
+                 }
+      else if(choice == 6)
+      {
+        cout<<endl;
+       set_Data2();
+       Cosine();
+      }
+        else if(choice == 7)
+        {
+         cout<<endl;
+         set_Data2();
+         Tangent();
+        }
+          else if(choice == 8)
+          {
+           cout<<endl;
+           Exponent();
+          }
+            else if(choice == 9)
+            {
+            int num;
+            num = set_Factorial();
+            cout<<Factorial(num);
+            }
+    }
+};
+
+int main()
+{
+int choice, x;
+Complete_Calculator obj;
+obj.display_choice();
+
+do{
+cout<<endl<<endl;
+obj.user_input();
+obj.Choice();
+}
+while(obj.choice != 0);
+return 0;
+}
